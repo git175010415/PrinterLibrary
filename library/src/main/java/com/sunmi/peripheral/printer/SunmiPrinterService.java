@@ -556,9 +556,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 return DESCRIPTOR;
             }
 
-            /**
-             * 打印机固件升级(只供系统组件调用,开发者调用无效)
-             */
             @Override
             public void updateFirmware() throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -590,9 +587,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 return _result;
             }
 
-            /**
-             * 取WoyouService服务版本
-             */
             @Override
             public String getServiceVersion() throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -625,11 +619,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印机自检，打印机会打印自检页
-             *
-             * @param callback 回调
-             */
             @Override
             public void printerSelfChecking(ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -645,9 +634,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 获取打印机板序列号
-             */
             @Override
             public String getPrinterSerialNo() throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -665,9 +651,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 return _result;
             }
 
-            /**
-             * 获取打印机固件版本号
-             */
             @Override
             public String getPrinterVersion() throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -685,9 +668,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 return _result;
             }
 
-            /**
-             * 获取打印机型号
-             */
             @Override
             public String getPrinterModal() throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -705,9 +685,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 return _result;
             }
 
-            /**
-             * 获取打印头打印长度
-             */
             @Override
             public int getPrintedLength(ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -755,12 +732,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 使用原始指令打印
-             *
-             * @param data     指令
-             * @param callback 结果回调
-             */
             @Override
             public void sendRAWData(byte[] data, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -793,12 +764,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 设置打印字体, 对之后打印有影响，除非初始化
-             * (目前只支持一种字体"gh"，gh是一种等宽中文字体，之后会提供更多字体选择)
-             *
-             * @param typeface: 字体名称
-             */
             @Override
             public void setFontName(String typeface, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -815,14 +780,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 设置字体大小, 对之后打印有影响，除非初始化
-             * 注意：字体大小是超出标准国际指令的打印方式，
-             * 调整字体大小会影响字符宽度，每行字符数量也会随之改变，
-             * 因此按等宽字体形成的排版可能会错乱
-             *
-             * @param fontsize: 字体大小
-             */
             @Override
             public void setFontSize(float fontsize, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -839,11 +796,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印文字，文字宽度满一行自动换行排版，不满一整行不打印除非强制换行
-             *
-             * @param text: 要打印的文字字符串
-             */
             @Override
             public void printText(String text, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -860,13 +812,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印指定字体的文本，字体设置只对本次有效
-             *
-             * @param text:     要打印文字
-             * @param typeface: 字体名称（目前只支持"gh"字体）
-             * @param fontsize: 字体大小
-             */
             @Override
             public void printTextWithFont(String text, String typeface, float fontsize, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -885,14 +830,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印表格的一行，可以指定列宽、对齐方式
-             *
-             * @param colsTextArr  各列文本字符串数组
-             * @param colsWidthArr 各列宽度数组(以英文字符计算, 每个中文字符占两个英文字符, 每个宽度大于0)
-             * @param colsAlign    各列对齐方式(0居左, 1居中, 2居右)
-             *                     备注: 三个参数的数组长度应该一致, 如果colsText[i]的宽度大于colsWidth[i], 则文本换行
-             */
             @Override
             public void printColumnsText(String[] colsTextArr, int[] colsWidthArr, int[] colsAlign, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -911,11 +848,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印图片
-             *
-             * @param bitmap: 图片bitmap对象(最大宽度384像素，超过无法打印并且回调callback异常函数)
-             */
             @Override
             public void printBitmap(android.graphics.Bitmap bitmap, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -937,24 +869,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印一维条码
-             *
-             * @param data:         条码数据
-             * @param symbology:    条码类型
-             *                      0 -- UPC-A，
-             *                      1 -- UPC-E，
-             *                      2 -- JAN13(EAN13)，
-             *                      3 -- JAN8(EAN8)，
-             *                      4 -- CODE39，
-             *                      5 -- ITF，
-             *                      6 -- CODABAR，
-             *                      7 -- CODE93，
-             *                      8 -- CODE128
-             * @param height:       条码高度, 取值1到255, 默认162
-             * @param width:        条码宽度, 取值2至6, 默认2
-             * @param textposition: 文字位置 0--不打印文字, 1--文字在条码上方, 2--文字在条码下方, 3--条码上下方均打印
-             */
             @Override
             public void printBarCode(String data, int symbology, int height, int width, int textposition, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -975,17 +889,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印二维条码
-             *
-             * @param data:       二维码数据
-             * @param modulesize: 二维码块大小(单位:点, 取值 1 至 16 )
-             * @param errorlevel: 二维码纠错等级(0 至 3)，
-             *                    0 -- 纠错级别L ( 7%)，
-             *                    1 -- 纠错级别M (15%)，
-             *                    2 -- 纠错级别Q (25%)，
-             *                    3 -- 纠错级别H (30%)
-             */
             @Override
             public void printQRCode(String data, int modulesize, int errorlevel, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -1004,13 +907,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印文字，文字宽度满一行自动换行排版，不满一整行不打印除非强制换行
-             * 文字按矢量文字宽度原样输出，即每个字符不等宽
-             *
-             * @param text: 要打印的文字字符串
-             *              Ver 1.7.6中增加
-             */
             @Override
             public void printOriginalText(String text, ICallback callback) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -1049,9 +945,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 打印缓冲区内容
-             */
             @Override
             public void commitPrinterBuffer() throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -1069,9 +962,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 切纸
-             */
             @Override
             public void cutPaper(ICallback callback) throws RemoteException {
                 if(transaction_table[10] == Stub.TRANSACTION_STOP){
@@ -1116,9 +1006,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 return _result;
             }
 
-            /**
-             * 打开钱柜
-             */
             @Override
             public void openDrawer(ICallback callback) throws RemoteException {
                 if(transaction_table[12] == Stub.TRANSACTION_STOP){
@@ -1163,11 +1050,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 return _result;
             }
 
-            /**
-             * 进入缓冲模式，所有打印调用将缓存，调用commitPrinterBuffe()后打印
-             *
-             * @param clean: 是否清除缓冲区内容
-             */
             @Override
             public void enterPrinterBuffer(boolean clean) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -1186,11 +1068,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 退出缓冲模式
-             *
-             * @param commit: 是否打印出缓冲区内容
-             */
             @Override
             public void exitPrinterBuffer(boolean commit) throws RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -1353,9 +1230,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 return _result;
             }
 
-            /*
-            * @param flag 1 初始化 2 唤醒LCD 3休眠LCD 4清屏
-            */
             @Override
             public void sendLCDCommand(int flag) throws RemoteException {
                 if(transaction_table[14] == Stub.TRANSACTION_STOP){
@@ -1573,10 +1447,7 @@ public interface SunmiPrinterService extends android.os.IInterface {
                 }
                 return _result;
             }
-            /**
-             * 是否强制启用下划线样式
-             * @return true:启用 false：未启用
-             */
+
             @Override public boolean isForcedUnderline() throws android.os.RemoteException
             {
                 if(transaction_table[24] == Stub.TRANSACTION_STOP){
@@ -1748,7 +1619,7 @@ public interface SunmiPrinterService extends android.os.IInterface {
         };
 
         static final int TRANSACTION_STOP = 9527;
-        //所有机器均匹配
+
         static final int TRANSACTION_updateFirmware = (android.os.IBinder.FIRST_CALL_TRANSACTION);
         static final int TRANSACTION_getFirmwareStatus = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
         static final int TRANSACTION_getServiceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
@@ -1770,7 +1641,7 @@ public interface SunmiPrinterService extends android.os.IInterface {
         static final int TRANSACTION_printBarCode = (android.os.IBinder.FIRST_CALL_TRANSACTION + 18);
         static final int TRANSACTION_printQRCode = (android.os.IBinder.FIRST_CALL_TRANSACTION + 19);
         static final int TRANSACTION_printOriginalText = (android.os.IBinder.FIRST_CALL_TRANSACTION + 20);
-        //不同机型可能不存在以下接口
+
         static final int TRANSACTION_commitPrint = (android.os.IBinder.FIRST_CALL_TRANSACTION + 21);
         static final int TRANSACTION_commitPrinterBuffer = (android.os.IBinder.FIRST_CALL_TRANSACTION + 22);
         static final int TRANSACTION_enterPrinterBuffer = (android.os.IBinder.FIRST_CALL_TRANSACTION + 23);
@@ -1823,12 +1694,6 @@ public interface SunmiPrinterService extends android.os.IInterface {
 
     public void lineWrap(int n, ICallback callback) throws RemoteException;
 
-    /**
-     * 使用原始指令打印
-     *
-     * @param data     指令
-     * @param callback 结果回调
-     */
     public void sendRAWData(byte[] data, ICallback callback) throws RemoteException;
 
     public void setAlignment(int alignment, ICallback callback) throws RemoteException;

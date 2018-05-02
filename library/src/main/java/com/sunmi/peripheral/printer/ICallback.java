@@ -6,9 +6,6 @@ package com.sunmi.peripheral.printer;
 
 import android.os.IBinder;
 
-/**
- * 打印服务执行结果的回调
- */
 public interface ICallback extends android.os.IInterface {
     /**
      * Local-side IPC implementation stub class.
@@ -119,11 +116,6 @@ public interface ICallback extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 返回结果(字符串数据)
-             *
-             * @param result: 结果，打印机上电以来打印长度(单位mm)
-             */
             @Override
             public void onReturnString(String result) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -136,11 +128,6 @@ public interface ICallback extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 执行发生异常
-             * code：	异常代码
-             * msg:	异常描述
-             */
             @Override
             public void onRaiseException(int code, String msg) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -154,11 +141,6 @@ public interface ICallback extends android.os.IInterface {
                 }
             }
 
-            /**
-             * 返回打印结果
-             * code：	异常代码
-             * msg:	异常描述
-             */
             @Override
             public void onPrintResult(int code, String msg) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -179,31 +161,11 @@ public interface ICallback extends android.os.IInterface {
         static final int TRANSACTION_onPrintResult = (IBinder.FIRST_CALL_TRANSACTION + 3);
     }
 
-    /**
-     * 返回执行结果
-     *
-     * @param isSuccess: true执行成功，false 执行失败
-     */
     public void onRunResult(boolean isSuccess) throws android.os.RemoteException;
 
-    /**
-     * 返回结果(字符串数据)
-     *
-     * @param result: 结果，打印机上电以来打印长度(单位mm)
-     */
     public void onReturnString(String result) throws android.os.RemoteException;
 
-    /**
-     * 执行发生异常
-     * code：	异常代码
-     * msg:	异常描述
-     */
     public void onRaiseException(int code, String msg) throws android.os.RemoteException;
 
-    /**
-     * 返回打印结果
-     * code：	异常代码
-     * msg:	异常描述
-     */
     public void onPrintResult(int code, String msg) throws android.os.RemoteException;
 }

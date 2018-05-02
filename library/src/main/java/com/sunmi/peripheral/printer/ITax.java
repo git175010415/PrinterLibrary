@@ -3,9 +3,7 @@
  * Original file: D:\\sunmi_print\\SunmiPrinterDemo\\SunmiPrinterDemo\\app\\src\\main\\aidl\\woyou\\aidlservice\\jiuiv5\\ITax.aidl
  */
 package com.sunmi.peripheral.printer;
-/**
- * 打印服务执行结果的回调
- */
+
 public interface ITax extends android.os.IInterface
 {
 /** Local-side IPC implementation stub class. */

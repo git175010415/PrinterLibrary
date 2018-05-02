@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 26
@@ -7,7 +8,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
 
     buildTypes {
@@ -17,6 +18,16 @@ android {
         }
     }
 
+}
+
+publish {
+    userOrg = 'b175010415'
+    groupId = 'com.kaltin'
+    artifactId = 'SunmiPrinterLibrary'
+    publishVersion = '1.0.0'
+    desc = 'interface to sunmi print service'
+    website = 'https://github.com/git175010415/PrinterLibrary'
+    licences = ['Apache-2.0']
 }
 
 dependencies {
